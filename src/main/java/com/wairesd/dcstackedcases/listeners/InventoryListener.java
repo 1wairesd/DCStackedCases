@@ -1,9 +1,9 @@
-package me.wairesd.dcstackedcases.listeners;
+package com.wairesd.dcstackedcases.listeners;
 
-import me.wairesd.dcstackedcases.DCStackedCasesAddon;
-import me.wairesd.dcstackedcases.managers.InventoryGuiManager;
-import me.wairesd.dcstackedcases.managers.PlayerDataManager;
-import me.wairesd.dcstackedcases.utils.CustomInventoryHolder;
+import com.wairesd.dcstackedcases.DCStackedCasesAddon;
+import com.wairesd.dcstackedcases.managers.InventoryGuiManager;
+import com.wairesd.dcstackedcases.managers.PlayerDataManager;
+import com.wairesd.dcstackedcases.utils.CustomInventoryHolder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

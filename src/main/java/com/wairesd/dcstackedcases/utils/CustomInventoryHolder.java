@@ -1,4 +1,4 @@
-package me.wairesd.dcstackedcases.utils;
+package com.wairesd.dcstackedcases.utils;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;

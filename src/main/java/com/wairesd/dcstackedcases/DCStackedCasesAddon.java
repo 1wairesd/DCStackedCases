@@ -1,11 +1,11 @@
-package me.wairesd.dcstackedcases;
+package com.wairesd.dcstackedcases;
 
-import me.wairesd.dcstackedcases.listeners.InventoryListener;
+import com.wairesd.dcstackedcases.listeners.InventoryListener;
 import com.jodexindustries.donatecase.api.DCAPI;
 import com.jodexindustries.donatecase.api.addon.InternalJavaAddon;
 import com.jodexindustries.donatecase.api.data.subcommand.SubCommand;
-import me.wairesd.dcstackedcases.managers.InventoryGuiManager;
-import me.wairesd.dcstackedcases.managers.PlayerDataManager;
+import com.wairesd.dcstackedcases.managers.InventoryGuiManager;
+import com.wairesd.dcstackedcases.managers.PlayerDataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;

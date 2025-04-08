@@ -1,7 +1,7 @@
-package me.wairesd.dcstackedcases.managers;
+package com.wairesd.dcstackedcases.managers;
 
-import me.wairesd.dcstackedcases.DCStackedCasesAddon;
-import me.wairesd.dcstackedcases.utils.CustomInventoryHolder;
+import com.wairesd.dcstackedcases.DCStackedCasesAddon;
+import com.wairesd.dcstackedcases.utils.CustomInventoryHolder;
 import com.jodexindustries.donatecase.api.DCAPI;
 import com.jodexindustries.donatecase.api.data.casedata.CaseData;
 import org.bukkit.Bukkit;

@@ -1,4 +1,4 @@
-package me.wairesd.dcstackedcases.managers;
+package com.wairesd.dcstackedcases.managers;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
