@@ -33,7 +33,6 @@ public final class DCStackedCasesAddon extends InternalJavaAddon {
         playerDataManager = new PlayerDataManager();
         inventoryGuiManager = new InventoryGuiManager(this, playerDataManager);
 
-        // Register the "stackedcases" subcommand
         api.getSubCommandManager().register(SubCommand.builder()
                 .addon(this)
                 .name(COMMAND_NAME)
@@ -50,14 +49,11 @@ public final class DCStackedCasesAddon extends InternalJavaAddon {
                 })
                 .build());
 
-        Plugin donateCase = Bukkit.getPluginManager().getPlugin("DonateCase");
-        if (donateCase != null) {
-            // Register inventory event listener
-            Bukkit.getPluginManager().registerEvents(new InventoryListener(this, playerDataManager, inventoryGuiManager), donateCase);
-        } else {
-            getLogger().severe("DonateCase plugin not found!");
-        }
+        registerEvents(new InventoryListener(this, playerDataManager, inventoryGuiManager));
 
         getLogger().info("DCStackedCases enabled successfully!");
+    }
+
+    private void registerEvents(InventoryListener inventoryListener) {
     }
 }

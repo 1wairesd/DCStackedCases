@@ -4,6 +4,7 @@ import com.wairesd.dcstackedcases.DCStackedCasesAddon;
 import com.wairesd.dcstackedcases.utils.CustomInventoryHolder;
 import com.jodexindustries.donatecase.api.DCAPI;
 import com.jodexindustries.donatecase.api.data.casedata.CaseData;
+import com.jodexindustries.donatecase.spigot.tools.BukkitUtils; // Добавляем импорт
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -18,9 +19,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Manages the creation and display of the stacked cases inventory GUI.
- */
 public class InventoryGuiManager {
     private final DCStackedCasesAddon plugin;
     private final PlayerDataManager playerDataManager;
@@ -39,8 +37,11 @@ public class InventoryGuiManager {
     public void openGui(Player player, int page) {
         // Fetch player's case keys asynchronously to avoid blocking the main thread
         api.getCaseKeyManager().getAsync(player.getName()).thenAccept(keys -> {
-            Plugin donateCase = Bukkit.getPluginManager().getPlugin("DonateCase");
-            if (donateCase == null) return;
+            Plugin donateCase = BukkitUtils.getDonateCase();
+            if (donateCase == null) {
+                plugin.getLogger().severe("DonateCase plugin not found!");
+                return;
+            }
 
             List<ItemStack> items = prepareItems(keys);
 
@@ -54,6 +55,7 @@ public class InventoryGuiManager {
         });
     }
 
+    // Остальные методы (prepareItems, createInventory, createCaseItem) остаются без изменений
     private List<ItemStack> prepareItems(Map<String, Integer> keys) {
         List<ItemStack> items = new ArrayList<>();
 
@@ -62,7 +64,6 @@ public class InventoryGuiManager {
             CaseData caseData = api.getCaseManager().get(entry.getKey());
             if (caseData == null) continue;
             int amount = entry.getValue();
-            // Split keys into stacks of 64 (Minecraft stack limit)
             while (amount > 0) {
                 int stackSize = Math.min(amount, 64);
                 items.add(createCaseItem(entry.getKey(), stackSize));
@@ -77,7 +78,6 @@ public class InventoryGuiManager {
         Inventory inv = Bukkit.createInventory(new CustomInventoryHolder(), 54, title);
 
         if (items.isEmpty()) {
-            // Display a "no cases" message if the player has no keys
             ItemStack noCases = new ItemStack(Material.BARRIER);
             ItemMeta meta = noCases.getItemMeta();
             meta.setDisplayName("§cYou have no cases");
@@ -91,7 +91,6 @@ public class InventoryGuiManager {
                 inv.setItem(i - startIndex, items.get(i));
             }
 
-            // Add navigation arrows if applicable
             if (page > 0) {
                 ItemStack back = new ItemStack(Material.ARROW);
                 ItemMeta backMeta = back.getItemMeta();
