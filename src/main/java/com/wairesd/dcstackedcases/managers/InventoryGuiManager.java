@@ -54,8 +54,7 @@ public class InventoryGuiManager {
             });
         });
     }
-
-    // Остальные методы (prepareItems, createInventory, createCaseItem) остаются без изменений
+    
     private List<ItemStack> prepareItems(Map<String, Integer> keys) {
         List<ItemStack> items = new ArrayList<>();
 
