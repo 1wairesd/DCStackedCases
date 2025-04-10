@@ -1,5 +1,5 @@
 name: DCStackedCases
-main: me.wairesd.dcstackedcases.DCStackedCasesAddon
+main: com.wairesd.dcstackedcases.DCStackedCasesAddon
 version: 1.0.0
 api: 2.1.0.0
 author: 1wairesd
