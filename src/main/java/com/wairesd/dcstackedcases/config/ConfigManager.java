@@ -73,7 +73,6 @@ public class ConfigManager {
         }
     }
 
-    public ConfigurationNode getConfig() { return config; }
     public LanguageMessages getCurrentLanguageMessages() { return currentLanguageMessages; }
     public int getMenuSize() { return config.node("DCStackedCases", "settings", "menu_size").getInt(54); }
     public int getBackItemSlot() { return config.node("DCStackedCases", "settings", "back_item_slot").getInt(54); }
