@@ -1,11 +1,11 @@
 package com.wairesd.dcstackedcases.listener;
 
+import com.jodexindustries.donatecase.api.tools.DCTools;
 import com.wairesd.dcstackedcases.DCStackedCasesAddon;
 import com.wairesd.dcstackedcases.config.ConfigManager;
 import com.wairesd.dcstackedcases.config.LanguageMessages;
 import com.wairesd.dcstackedcases.manager.InventoryGuiManager;
 import com.wairesd.dcstackedcases.manager.PlayerDataManager;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -44,8 +44,8 @@ public class InventoryListener implements Listener {
 
         ItemMeta meta = item.getItemMeta();
         String name = meta.getDisplayName();
-        String back = ChatColor.translateAlternateColorCodes('&', lang.getBackItemDisplayName());
-        String forward = ChatColor.translateAlternateColorCodes('&', lang.getForwardItemDisplayName());
+        String back = DCTools.rc(lang.getBackItemDisplayName());
+        String forward = DCTools.rc(lang.getForwardItemDisplayName());
         int backSlot = config.getBackItemSlot(), forwardSlot = config.getForwardItemSlot(), itemsPerPage = config.getMenuSize() - 9;
 
         if (slot == backSlot && name.equals(back) && page > 0) {
@@ -69,7 +69,7 @@ public class InventoryListener implements Listener {
     public void onOpen(InventoryOpenEvent e) {
         Player p = (Player) e.getPlayer();
         Inventory inv = e.getInventory();
-        String title = ChatColor.translateAlternateColorCodes('&', lang.getMenuTitle().replace("%d", String.valueOf(playerDataManager.getPage(p) + 1)));
+        String title = DCTools.rc(lang.getMenuTitle().replace("%d", String.valueOf(playerDataManager.getPage(p) + 1)));
         if (inv.getSize() == config.getMenuSize() && e.getView().getTitle().equals(title)) {
             playerDataManager.setInventory(p, inv); // Регистрируем инвентарь игрока
             if (config.isDebug()) plugin.getLogger().info("Игрок " + p.getName() + " открыл страницу");

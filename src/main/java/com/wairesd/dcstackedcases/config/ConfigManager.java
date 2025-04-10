@@ -1,6 +1,7 @@
 package com.wairesd.dcstackedcases.config;
 
 import com.wairesd.dcstackedcases.DCStackedCasesAddon;
+import lombok.Getter;
 import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
@@ -13,6 +14,7 @@ public class ConfigManager {
     private final DCStackedCasesAddon addon;
     private ConfigurationNode config;
     private final File configFile, langDir;
+    @Getter
     private LanguageMessages currentLanguageMessages;
 
     public ConfigManager(DCStackedCasesAddon addon, Path configDir) {
@@ -73,11 +75,27 @@ public class ConfigManager {
         }
     }
 
-    public LanguageMessages getCurrentLanguageMessages() { return currentLanguageMessages; }
-    public int getMenuSize() { return config.node("DCStackedCases", "settings", "menu_size").getInt(54); }
-    public int getBackItemSlot() { return config.node("DCStackedCases", "settings", "back_item_slot").getInt(54); }
-    public int getForwardItemSlot() { return config.node("DCStackedCases", "settings", "forward_item_slot").getInt(46); }
-    public boolean isDebug() { return config.node("DCStackedCases", "debug").getBoolean(false); }
-    public int getConfigVersion() { return config.node("config", "version").getInt(1); }
-    public String getConfigType() { return config.node("config", "type").getString("CONFIG"); }
+    public int getMenuSize() {
+        return config.node("DCStackedCases", "settings", "menu_size").getInt(54);
+    }
+
+    public int getBackItemSlot() {
+        return config.node("DCStackedCases", "settings", "back_item_slot").getInt(54);
+    }
+
+    public int getForwardItemSlot() {
+        return config.node("DCStackedCases", "settings", "forward_item_slot").getInt(46);
+    }
+
+    public boolean isDebug() {
+        return config.node("DCStackedCases", "debug").getBoolean(false);
+    }
+
+    public int getConfigVersion() {
+        return config.node("config", "version").getInt(1);
+    }
+
+    public String getConfigType() {
+        return config.node("config", "type").getString("CONFIG");
+    }
 }

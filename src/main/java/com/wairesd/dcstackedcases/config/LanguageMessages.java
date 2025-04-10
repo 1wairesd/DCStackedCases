@@ -1,5 +1,8 @@
 package com.wairesd.dcstackedcases.config;
 
+import lombok.Getter;
+
+@Getter
 public class LanguageMessages {
     private final String forwardItemDisplayName, backItemDisplayName, defaultLoreKeys, notKeys, menuTitle;
 
@@ -11,11 +14,8 @@ public class LanguageMessages {
         this.menuTitle = title;
     }
 
-    public LanguageMessages() { this("&cForward", "&cBack", "&7Keys", "&cYou have no keys", "Page %d"); }
+    public LanguageMessages() {
+        this("&cForward", "&cBack", "&7Keys", "&cYou have no keys", "Page %d");
+    }
 
-    public String getForwardItemDisplayName() { return forwardItemDisplayName; }
-    public String getBackItemDisplayName() { return backItemDisplayName; }
-    public String getDefaultLoreKeys() { return defaultLoreKeys; }
-    public String getNotKeys() { return notKeys; }
-    public String getMenuTitle() { return menuTitle; }
 }

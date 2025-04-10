@@ -10,6 +10,7 @@ import com.wairesd.dcstackedcases.config.MaterialsConfig;
 import com.wairesd.dcstackedcases.listener.InventoryListener;
 import com.wairesd.dcstackedcases.manager.InventoryGuiManager;
 import com.wairesd.dcstackedcases.manager.PlayerDataManager;
+import lombok.Getter;
 import net.kyori.event.method.annotation.Subscribe;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -25,7 +26,7 @@ public final class DCStackedCasesAddon extends InternalJavaAddon implements Subs
 
     private final DCAPI api = DCAPI.getInstance();
     private InventoryGuiManager inventoryGuiManager;
-    private PlayerDataManager playerDataManager;
+    @Getter
     private MaterialsConfig materialsConfig;
     private ConfigManager configManager;
 
@@ -47,15 +48,18 @@ public final class DCStackedCasesAddon extends InternalJavaAddon implements Subs
             return;
         }
 
-        playerDataManager = new PlayerDataManager();
+        PlayerDataManager playerDataManager = new PlayerDataManager();
         inventoryGuiManager = new InventoryGuiManager(this, playerDataManager, configManager);
 
         api.getSubCommandManager().register(SubCommand.builder()
                 .addon(this).name(COMMAND_NAME)
                 .permission(PERMISSION)
                 .executor((s, l, a) -> {
-                    if (!(s.getHandler() instanceof Player p)) { s.sendMessage("Только для игроков"); return true; }
-                    inventoryGuiManager.openGui(p, 0);
+                    if (!(s.getHandler() instanceof Player)) {
+                        s.sendMessage("Только для игроков");
+                        return true;
+                    }
+                    inventoryGuiManager.openGui((Player) s.getHandler(), 0);
                     return true;
                 }).build());
 
@@ -80,5 +84,4 @@ public final class DCStackedCasesAddon extends InternalJavaAddon implements Subs
         }
     }
 
-    public MaterialsConfig getMaterialsConfig() { return materialsConfig; }
 }

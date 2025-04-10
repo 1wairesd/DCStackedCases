@@ -4,4 +4,3 @@ version: 1.0.0
 api: 2.1.0.0
 author: 1wairesd
 platforms: [Bukkit]
-depend: [DCEventManager]
