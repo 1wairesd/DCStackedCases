@@ -10,6 +10,7 @@ import com.wairesd.dcstackedcases.config.MaterialsConfig;
 import com.wairesd.dcstackedcases.listener.InventoryListener;
 import com.wairesd.dcstackedcases.manager.InventoryGuiManager;
 import com.wairesd.dcstackedcases.manager.PlayerDataManager;
+import net.kyori.event.method.annotation.Subscribe;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -68,7 +69,7 @@ public final class DCStackedCasesAddon extends InternalJavaAddon implements Subs
         getLogger().info("DCStackedCases успешно запущен");
     }
 
-    @net.kyori.event.method.annotation.Subscribe
+    @Subscribe
     public void onDonateCaseReload(DonateCaseReloadEvent e) {
         configManager.reload();
         try {
@@ -78,11 +79,5 @@ public final class DCStackedCasesAddon extends InternalJavaAddon implements Subs
         }
     }
 
-    public ConfigManager getConfigManager() { return configManager; }
     public MaterialsConfig getMaterialsConfig() { return materialsConfig; }
-    public Plugin getBootstrap() {
-        Plugin donateCase = Bukkit.getPluginManager().getPlugin("DonateCase");
-        if (donateCase == null) throw new IllegalStateException("DonateCase не найден");
-        return donateCase;
-    }
 }
