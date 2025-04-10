@@ -51,7 +51,8 @@ public final class DCStackedCasesAddon extends InternalJavaAddon implements Subs
         inventoryGuiManager = new InventoryGuiManager(this, playerDataManager, configManager);
 
         api.getSubCommandManager().register(SubCommand.builder()
-                .addon(this).name(COMMAND_NAME).permission(PERMISSION)
+                .addon(this).name(COMMAND_NAME)
+                .permission(PERMISSION)
                 .executor((s, l, a) -> {
                     if (!(s.getHandler() instanceof Player p)) { s.sendMessage("Только для игроков"); return true; }
                     inventoryGuiManager.openGui(p, 0);
