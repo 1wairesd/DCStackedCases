@@ -1,0 +1,10 @@
+DCStackedCases:
+  settings:
+    menu_size: 54
+    back_item_slot: 45
+    forward_item_slot: 53
+  debug: false
+  Languages: en_US
+config:
+  version: 1
+  type: CONFIG

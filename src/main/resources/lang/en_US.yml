@@ -1,0 +1,6 @@
+forward_item_displayname: "&cForward"
+back_item_displayname: "&cBack"
+
+default_lore_keys: "&7Keys"
+not_keys: "&cYou have no keys"
+menu_title: "Page %d"

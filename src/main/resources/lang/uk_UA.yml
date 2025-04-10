@@ -1,0 +1,6 @@
+forward_item_displayname: "&cВперед"
+back_item_displayname: "&cНазад"
+
+default_lore_keys: "&7Ключі"
+not_keys: "&cУ вас немає ключів"
+menu_title: "Сторінка %d"
